@@ -35,7 +35,7 @@ CREATE TABLE `Species` (
 
 LOCK TABLES `Species` WRITE;
 /*!40000 ALTER TABLE `Species` DISABLE KEYS */;
-INSERT INTO `Species` VALUES (1,'Chat'),(2,'Chien');
+INSERT INTO `Species` VALUES (1,'Chat'),(2,'Chien'),(3,'Lapin'),(4,'Autre');
 /*!40000 ALTER TABLE `Species` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -49,7 +49,7 @@ DROP TABLE IF EXISTS `Animals`;
 CREATE TABLE `Animals` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
-  `species_id` int NOT NULL,
+  `species_id` tinyint(1) NOT NULL DEFAULT '0',
   `icad` varchar(15) DEFAULT NULL,
   `birthdate` date DEFAULT NULL,
   `entry_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -69,7 +69,7 @@ CREATE TABLE `Animals` (
   `second_vaccination_date` date DEFAULT NULL,
   `fiv_negative` tinyint(1) DEFAULT NULL,
   `felv_negative` tinyint(1) DEFAULT NULL,
-  `health_issues` varchar(255) DEFAULT NULL,
+  `health_issues` varchar(500) DEFAULT NULL,
   `behaviour` varchar(255) DEFAULT NULL,
   `adopted` tinyint(1) NOT NULL DEFAULT '0',
   `broadcastable` tinyint(1) NOT NULL DEFAULT '0',
@@ -148,7 +148,7 @@ DROP TABLE IF EXISTS `AnimalsToHostFamilies`;
 CREATE TABLE `AnimalsToHostFamilies` (
   `animal_id` int NOT NULL,
   `host_family_id` int NOT NULL,
-  `entry_date` date NOT NULL,
+  `entry_date` date DEFAULT NULL,
   `exit_date` date DEFAULT NULL,
   PRIMARY KEY (`animal_id`,`host_family_id`),
   KEY `host_family_id` (`host_family_id`),
@@ -187,7 +187,7 @@ CREATE TABLE `HostFamilyKinds` (
 
 LOCK TABLES `HostFamilyKinds` WRITE;
 /*!40000 ALTER TABLE `HostFamilyKinds` DISABLE KEYS */;
-INSERT INTO `HostFamilyKinds` VALUES (1,'Chats'),(2,'Chatons + Maman'),(3,'Chiens'),(4,'Chatons biberonnage'),(5,'Chiots'),(6,'Lapins');
+INSERT INTO `HostFamilyKinds` VALUES (1,'Chats'),(2,'Chatons + Maman'),(3,'Chiens'),(4,'Chatons biberonnage'),(5,'Chiots'),(6,'Lapins'),(7,'Autres');
 /*!40000 ALTER TABLE `HostFamilyKinds` ENABLE KEYS */;
 UNLOCK TABLES;
 
